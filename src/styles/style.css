@@ -65,7 +65,7 @@
     cursor: pointer;
   }
    
-  .note-input {
+  .note-form {
     border: 1px dashed black;
     padding: 16px;
     margin: 14px 0;
@@ -73,7 +73,7 @@
     margin-bottom: 32px;
   }
    
-  .note-input input {
+  .note-form input {
     display: block;
     width: 100%;
     padding: 8px;
@@ -81,7 +81,7 @@
     font-family: 'Inter', sans-serif;
   }
    
-  .note-input button {
+  .note-form button {
     width: 100%;
     padding: 8px;
     font-family: 'Inter', sans-serif;
