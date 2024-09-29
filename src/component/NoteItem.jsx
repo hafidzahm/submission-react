@@ -3,7 +3,7 @@ import NoteItemBody from "./NoteItemBody";
 
 function NoteItem ({ title, body, createdAt, archived}) {
     return (
-        <div>
+        <div className="note-item">
             <NoteItemBody title={title} body={body} createdAt={createdAt} archived={archived}/>
         </div>
     );
