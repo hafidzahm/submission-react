@@ -9,8 +9,11 @@ function NoteItem ({ id, title, body, createdAt, archived, onDelete, onArchive, 
         <div className="note-item">
             <NoteItemBody title={title} body={body} createdAt={createdAt} archived={archived}/>
             <DeleteButton id={id} onDelete={onDelete} />
-            <UnarchiveButton id={id} onUnarchive={onUnarchive} />
-            <ArchiveButton id={id} onArchive={onArchive} />
+            {
+                archived ? (<UnarchiveButton id={id} onUnarchive={onUnarchive} />) : (<ArchiveButton id={id} onArchive={onArchive} />)
+            }
+            
+            
 
         </div>
     );
