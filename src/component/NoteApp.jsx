@@ -31,7 +31,7 @@ class NoteApp extends React.Component {
                         id: +new Date(),
                         title,
                         body,
-                        createdAt: new Date().toISOString(),
+                        createdAt: "Dibuat pada: " +new Date().toLocaleString(),
                         archived: false,
                     }
                 ]
@@ -78,9 +78,6 @@ class NoteApp extends React.Component {
                 <h1>Aplikasi Catatan</h1>
                 <h2>Tambah Catatan</h2>
                 <NoteForm addNote ={this.onAddNoteHandler} />
-
-                <h2>Daftar Catatan</h2>
-
                 <div className="note-archive">
                 <h2>Catatan Aktif</h2>
                 <NoteList notes={this.state.notes.filter((note) => note.archived == false)} onDelete={this.onDeleteHandler} onArchive={this.onArchiveButtonHandler} />

@@ -51,11 +51,13 @@
     padding: 4px 0;
   }
    
-  .note-item__username {
+  .note-item__body {
     font-weight: lighter;
+    padding-bottom: 40px;
   }
    
   .note-item__delete {
+    display: block;
     padding: 8px;
     font-size: 18px;
     background-color: orangered;
@@ -64,9 +66,46 @@
     border-radius: 4px;
     cursor: pointer;
   }
+
+  .note-item__archive {
+    display: block;
+    padding: 8px;
+    font-size: 18px;
+    background-color:beige;
+    border-color: orangered;
+    color: orangered;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .note-item__unarchive {
+    display: block;
+    padding: 8px;
+    font-size: 18px;
+    background-color:maroon;
+    border-color: orangered;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  
    
   .note-form {
     border: 1px dashed black;
+    background-color: bisque;
+    padding: 16px;
+    margin: 14px 0;
+    border-radius: 8px;
+    margin-bottom: 32px;
+  }
+
+  .note-item {
+    display: grid;
+    border: 1px dashed black;
+    background-color: bisque;
     padding: 16px;
     margin: 14px 0;
     border-radius: 8px;
@@ -85,4 +124,28 @@
     width: 100%;
     padding: 8px;
     font-family: 'Inter', sans-serif;
+  }
+
+  .note-archive {
+    border: 2px dashed black;
+    padding: 16px;
+    margin: 14px 0;
+    border-radius: 8px;
+    margin-bottom: 32px;
+  }
+  .note-empty {
+    border: 2px dashed black;
+    background-color: bisque;
+    padding: 16px;
+    margin: 14px 0;
+    border-radius: 8px;
+    margin-bottom: 32px;
+  }
+
+  .note-unarchived {
+    border: 2px dashed black;
+    padding: 16px;
+    margin: 14px 0;
+    border-radius: 8px;
+    margin-bottom: 32px;
   }
