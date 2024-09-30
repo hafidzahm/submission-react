@@ -13,6 +13,8 @@ class NoteApp extends React.Component {
 
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
         this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+        this.onArchiveButtonHandler = this.onArchiveButtonHandler.bind(this);
+        this.onUnarchiveButtonHandler = this.onUnarchiveButtonHandler.bind(this);
     }
 
     onDeleteHandler(id) {
@@ -37,14 +39,58 @@ class NoteApp extends React.Component {
         });
     }
 
+    onArchiveButtonHandler(id) {
+        // this.setState((prevState) => {
+        //   const archivedNotes =  prevState.notes.map ((note) => note.id === id ? {...note, archived : true} : note,);
+        //   return {
+        //     notes: archivedNotes,
+        //   };
+        // });
+        this.setState((prevState) => {
+            const noteId = prevState.notes.find( note => note.id === id);
+            if (noteId) {
+                return {
+                    notes: prevState.notes.map(note =>
+                        note === noteId ? {...note, archived:true } : note
+                    )
+                };
+
+            } else {
+                return prevState
+            }
+        })
+    }
+
+    onUnarchiveButtonHandler(id){
+        this.setState((prevState) => {
+            const unarchiveNotes = prevState.notes.map ((note) => note.id === id ? {...note, archived : false} : note);
+            return {
+                notes: unarchiveNotes,
+            }
+        })
+    }  
+
+
+
     render() {
         return (
             <div className="note-app">
                 <h1>Aplikasi Catatan</h1>
                 <h2>Tambah Catatan</h2>
                 <NoteForm addNote ={this.onAddNoteHandler} />
+
                 <h2>Daftar Catatan</h2>
-                <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} />
+
+                <div className="note-archive">
+                <h2>Catatan Aktif</h2>
+                <NoteList notes={this.state.notes.filter((note) => note.archived == false)} onDelete={this.onDeleteHandler} onArchive={this.onArchiveButtonHandler} />
+                </div>
+
+                <div className="note-unarchived">
+                <h2>Catatan yang diarsipkan</h2>
+                <NoteList notes={this.state.notes.filter((note) => note.archived == true)} onDelete={this.onDeleteHandler} onUnarchive={this.onUnarchiveButtonHandler} />
+                </div>
+                
             </div>
         )
 
