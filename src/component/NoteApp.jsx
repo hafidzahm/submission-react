@@ -47,16 +47,23 @@ class NoteApp extends React.Component {
         //   };
         // });
         this.setState((prevState) => {
-            const unarchiveNotes = prevState.notes.map ((note) => note.id === id ? {...note, archived : false} : note);
-            return {
-                notes: unarchiveNotes,
+            const noteId = prevState.notes.find( note => note.id === id);
+            if (noteId) {
+                return {
+                    notes: prevState.notes.map(note =>
+                        note === noteId ? {...note, archived:true } : note
+                    )
+                };
+
+            } else {
+                return prevState
             }
         })
     }
 
     onUnarchiveButtonHandler(id){
         this.setState((prevState) => {
-            const unarchiveNotes = prevState.notes.map ((note) => note.id === id ? {...note, archived : true} : note);
+            const unarchiveNotes = prevState.notes.map ((note) => note.id === id ? {...note, archived : false} : note);
             return {
                 notes: unarchiveNotes,
             }
