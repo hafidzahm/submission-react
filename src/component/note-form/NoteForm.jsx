@@ -1,4 +1,5 @@
 import React from "react";
+import NoteTitleValidation from "./NoteTitleValidation";
 
 class NoteForm extends React.Component{
         constructor(props) {
@@ -10,12 +11,21 @@ class NoteForm extends React.Component{
             }
 
             this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
+            this.onTitleCharHandler = this.onTitleCharHandler.bind(this)
             this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
             this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this)
 
 
         }
+        
+        onTitleCharHandler (event) {
+            const title = event.target.value.length;
+            const maxLength = 50
 
+            title < 50 ? 
+            console.log(maxLength - title + " batas karakter lagi") : console.log('karakter limit terpenuhi')
+      
+        }
         onTitleChangeEventHandler(event) {
             this.setState(() => {
                 return {
@@ -41,7 +51,11 @@ class NoteForm extends React.Component{
         render() {
             return(
                 <form className="note-form" onSubmit={this.onSubmitEventHandler}>
-                    <input type="text" placeholder="Title" value={this.state.title} onChange={this.onTitleChangeEventHandler}/>
+                    <NoteTitleValidation text={
+                        (this.state.title.length < 50) ? 50 - this.state.title.length + " batas karakter lagi" :
+                        "batas karakter terpenuhi"
+                     } />
+                    <input type="text" placeholder="Title" value={this.state.title} onChange={this.onTitleChangeEventHandler} onInput={this.onTitleCharHandler}/>
                     <input type="text" placeholder="Body" value={this.state.body} onChange={this.onBodyChangeEventHandler}/>
                     <button type="submit">Tambah Catatan</button>
                 </form>
