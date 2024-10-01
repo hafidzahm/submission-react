@@ -40,12 +40,6 @@ class NoteApp extends React.Component {
   }
 
   onArchiveButtonHandler(id) {
-    // this.setState((prevState) => {
-    //   const archivedNotes =  prevState.notes.map ((note) => note.id === id ? {...note, archived : true} : note,);
-    //   return {
-    //     notes: archivedNotes,
-    //   };
-    // });
     this.setState((prevState) => {
       const noteId = prevState.notes.find((note) => note.id === id);
       if (noteId) {
